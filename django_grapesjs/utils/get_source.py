@@ -44,4 +44,7 @@ def build_url(base: str, arg: str=None):
         filter(lambda part: part, base.split('/'))
     )
     parts.append(arg)
-    return "/" + "/".join(parts)
+    url = "/".join(parts)
+    if base.startswith('/'):
+        return "/" + url
+    return url
