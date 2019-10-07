@@ -49,19 +49,8 @@ class GrapesJSTemplateProcessingMixin(GrapesJSContextData):
     form_class = lambda: get_grapesjs_form() # noqa: E731
     model_class = lambda: get_grapesjs_model() # noqa: E731
 
-    def get_context_data(self, **additional_context):
-        context = super().get_context_data(**additional_context)
-        return context
-
-    def get_or_create_a_template(self, **lookup_data):
-        """Check whether a template exists in db or create a new model for it."""
-        model_class = self.__class__.get_model_class()
-        lookup_field = settings.GRAPESJS_MODEL_LOOKUP_FIELD
-        return model_class.objects.get_or_create(
-            **{lookup_field: lookup_data.get(lookup_field)}
-        )
-
-    def get(self, request, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         if not settings.GRAPESJS_MODEL:
             raise ImproperlyConfigured(
                 "Invalid or missing a model path to GRAPESJS_MODEL property"
@@ -70,12 +59,17 @@ class GrapesJSTemplateProcessingMixin(GrapesJSContextData):
             raise ImproperlyConfigured(
                 "Invalid or missing a model path to GRAPESJS_FORM property"
             )
-        template_model, created = self.get_or_create_a_template(**kwargs)
-        context = self.get_context_data(**{
-            settings.GRAPESJS_MODEL_LOOKUP_FIELD: str(template_model.id)
-        })
-        return self.render_to_response(context)
 
+    def get_context_data(self, **additional_context):
+        context = super().get_context_data(**additional_context)
+        return context
+
+    def get_or_create_a_template(self, **lookup_data):
+        """Check whether a template exists in db or create a new model for it."""
+        model_class = self.__class__.get_model_class()
+        return model_class.objects.get_or_create(
+            **lookup_data
+        )
 
     @classmethod
     def get_form_class(cls):
