@@ -30,7 +30,7 @@ setup(
     name='django_grapesjs',
     packages=find_packages(exclude=('example*',)),
     include_package_data=True,
-    version=find_version('djang_grapesjs', '__about__.py'),
+    version=find_version('django_grapesjs', '__about__.py'),
     description='A small library for integrating the page builder "grapesjs" into django admin',
     author='Mark Burkut',
     author_email='burkut888mark@gmail.com',
@@ -48,5 +48,5 @@ setup(
         "Environment :: Web Environment",
     ],
     license='MIT',
-    install_requires=read('requirements/prod.txt'),
+    install_requires=read('requirements/base.txt'),
 )
