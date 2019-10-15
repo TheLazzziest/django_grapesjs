@@ -18,7 +18,10 @@ from django.contrib import admin
 from django_grapesjs.views.admin import GetTemplate
 
 from app.views import (
-    GrapesJSTemplateView, GrapesJSFormView
+    GrapesJSTemplateView, GrapesJSDetailView,
+    GrapesJSCreateView, GrapesJSDeleteView,
+    GrapesJSListView,
+    GrapesJSLoadView, GrapesJSUpdateView
 )
 
 
@@ -27,12 +30,12 @@ try:
 
     urlpatterns = [
         re_path('^admin/', admin.site.urls),
-        # Basic usage
-        re_path('^base/$', GrapesJSTemplateView.as_view(), name='base'),
-        # With network capabilities
-        re_path('^template/(?P<pk>[0-9]{1,})?/?$', GrapesJSFormView.as_view(), name='template'),
-        re_path('^template/save/(?P<pk>[0-9]{1,})?/?$', GrapesJSFormView.saveTemplate, name='template-save'),
-        re_path('^template/load/(?P<pk>[0-9]{1,})?/?$', GrapesJSFormView.loadTemplate, name='template-load'),
+        re_path('^template/list/$', GrapesJSListView.as_view(), name='template-list'),
+        re_path('^template/create/', GrapesJSCreateView.as_view(), name='template-create'),
+        re_path('^template/(?P<pk>\d+)/?$', GrapesJSDetailView.as_view(), name='template'),
+        re_path('^template/load/(?P<pk>\d+)/?$', GrapesJSLoadView.as_view(), name='template-load'),
+        re_path('^template/save/(?P<pk>\d+)/?$', GrapesJSUpdateView.as_view(), name='template-save'),
+        re_path('^template/delete/(?P<pk>\d+)/?$', GrapesJSDeleteView.as_view(), name='template-delete'),
         # Admin
         re_path('^get_template/$', GetTemplate.as_view(), name='dgjs_get_template'),
 
@@ -43,9 +46,11 @@ except ImportError:
 
     urlpatterns = [
         url(r'^admin/', include(admin.site.urls)),
-        url('^template/$', GrapesJSFormView.as_view(), name='template'),
-        url('^template/(?P<pk>[0-9]{1,}/)?$', GrapesJSFormView.as_view(), name='template'),
-        url('^template/load/(?P<pk>[0-9]{1,}/)?$', GrapesJSFormView.loadTemplate, name='template-load'),
-        url('^template/save/(?P<pk>[0-9]{1,}/)?$', GrapesJSFormView.saveTemplate, name='template-save'),
+        url('^template/list/$', GrapesJSListView.as_view(), name='template-list'),
+        url('^template/create/', GrapesJSCreateView.as_view(), name='template-create'),
+        url('^template/(?P<pk>\d+)/?$', GrapesJSDetailView.as_view(), name='template'),
+        url('^template/load/(?P<pk>\d+)/?$', GrapesJSLoadView.as_view(), name='template-load'),
+        url('^template/save/(?P<pk>\d+)/?$', GrapesJSUpdateView.as_view(), name='template-save'),
+        url('^template/delete/(?P<pk>\d+)/?$', GrapesJSDeleteView.as_view(), name='template-delete'),
         url('^get_template/$', GetTemplate.as_view(), name='dgjs_get_template'),
     ]
