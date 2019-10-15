@@ -61,7 +61,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': (os.path.join(BASE_DIR, 'templates'),),
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -144,7 +144,8 @@ GRAPESJS_PLUGIN_ASSETS = {
 
 GRAPESJS_MODEL = 'app.GrapesJSJSONModel'
 
-GRAPESJS_FORM = 'app.forms.GrapesJSBuilderForm'
+GRAPESJS_CREATE_FORM = 'app.forms.GrapesJSCreateForm'
+GRAPESJS_UPDATE_FORM = 'app.forms.GrapesJSUpdateForm'
 
 GRAPESJS_ALLOWED_ORIGIN_LIST = [
     'http://127.0.0.1'
