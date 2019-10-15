@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    {% block pre_head %}{% endblock %}
+    {% block head_styles %}{% endblock %}
+    {% block head_scripts %}{% endblock %}
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+{% block header %}{% endblock %}
+{% block main %}{% endblock %}
+{% block footer %}{% endblock %}
+{% block extra_body %}{% endblock %}
+{% block grapesjs %}{% endblock %}
+</body>
+</html>
