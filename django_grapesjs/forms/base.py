@@ -8,11 +8,21 @@ class GrapesJSAdminFormMixin(forms.ModelForm):
     html = GrapesJsField()
 
 
+class BaseGrapesJSMetaDataForm(forms.ModelForm):
+    """GrapesJS base form with form metadata."""
+
+    title = fields.CharField(required=False)
+    url = fields.URLField(required=False)
+
+    def clean_url(self):
+        return self.cleaned_data['url']
+
+
 class BaseGrapesJSForm(forms.ModelForm):
     """GrapesJS base form for client-side."""
 
-    gjs_assets = fields.CharField()
-    gjs_css = fields.CharField()
-    gjs_styles = fields.CharField()
-    gjs_html = fields.CharField()
-    gjs_components = fields.CharField()
+    gjs_assets = fields.CharField(required=False)
+    gjs_css = fields.CharField(required=False)
+    gjs_styles = fields.CharField(required=False)
+    gjs_html = fields.CharField(required=False)
+    gjs_components = fields.CharField(required=False)
