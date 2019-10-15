@@ -55,20 +55,52 @@ You can make a model which inherits a base model for GrapesJS template .. code-b
 
 Set a path to the model form which passes GrapesJS template to the model .. code-block:: python
 
-    GRAPESJS_FORM = 'app.forms.GrapesJSForm'
+    GRAPESJS_CREATE_FORM = 'app.forms.GrapesJSCreateForm'
+    GRAPESJS_UPDATE_FORM = 'app.forms.GrapesJSUpdateForm'
 
 Attach view mixin for processing GrapesJS template data .. code-block:: python
 
-    class GrapesJSView(GrapesJSTemplateProcessingMixin, views.View):
+
+    class GrapesJSTemplateView(GrapesJSTemplateViewMixin, TemplateView):
         pass
+
+
+    class GrapesJSDetailView(GrapesJSDetailViewMixin, DetailView):
+        pass
+
+
+    class GrapesJSLoadView(GrapesJSAjaxDetailViewMixin, View):
+        pass
+
+
+    class GrapesJSUpdateView(GrapesJSAjaxUpdateViewMixin, UpdateView):
+        pass
+
+
+    class GrapesJSListView(GrapesJSListViewMixin, GrapesJSCreateViewMixin, ListView):
+        pass
+
+
+    class GrapesJSCreateView(GrapesJSCreateViewMixin, CreateView):
+        pass
+
+
+
+    class GrapesJSDeleteView(GrapesJSDeleteViewMixin, DeleteView):
+        pass
+
+
 
 
 Add routes to the main view and several processing ones .. code-block:: python
 
     urlpatterns = [
-        re_path('^template/(?P<pk>[0-9]{1,})?/?$', GrapesJSFormView.as_view(), name='template'),
-        re_path('^template/save/(?P<pk>[0-9]{1,})?/?$', GrapesJSFormView.saveTemplate, name='template-save'),
-        re_path('^template/load/(?P<pk>[0-9]{1,})?/?$', GrapesJSFormView.loadTemplate, name='template-load'),
+        re_path('^template/list/$', GrapesJSListView.as_view(), name='template-list'),
+        re_path('^template/create/', GrapesJSCreateView.as_view(), name='template-create'),
+        re_path('^template/(?P<pk>\d+)/?$', GrapesJSDetailView.as_view(), name='template'),
+        re_path('^template/load/(?P<pk>\d+)/?$', GrapesJSLoadView.as_view(), name='template-load'),
+        re_path('^template/save/(?P<pk>\d+)/?$', GrapesJSUpdateView.as_view(), name='template-save'),
+        re_path('^template/delete/(?P<pk>\d+)/?$', GrapesJSDeleteView.as_view(), name='template-delete'),
     ]
 
 For admin usage:
