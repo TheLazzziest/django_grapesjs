@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+{% block header %}<h1>{{ title }}</h1>{% endblock %}
+{% block main %}
+    <ul>
+        {% for template in object_list %}
+            <li style="line-height: 2;">
+                <a href="{% url "template" pk=template.id %}">{{ template.title }}</a>
+                <form action="{% url "template-delete" pk=template.id %}" method="post" style="display: inline-block">
+                    {% csrf_token %}
+                    <input type="submit" value="Remove">
+                </form>
+            </li>
+        {% empty %}
+            <li>No templates yet.</li>
+        {% endfor %}
+    </ul>
+    {% if form %}
+        <form action="{% url "template-create" %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Add a template"/>
+        </form>
+    {% endif %}
+{% endblock %}
+</body>
+</html>

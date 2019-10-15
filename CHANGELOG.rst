@@ -12,6 +12,9 @@ Changelog
 - Add supporting database storing
 - Add GrapesJS plugin supporting
 - Add basic forms for admin-side and client-side
+- Split single view into a set of views for CRUD opearions.
+- Split model abstract declaration to a set of models
+- Add an abstract form for meta-data
 - Update example app.
 
 0.0.7 (2018-03-07)

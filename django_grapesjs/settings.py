@@ -13,7 +13,10 @@ GRAPESJS_CORE_ASSETS = settings.GRAPESJS_CORE_ASSETS
 GRAPESJS_PLUGIN_ASSETS = getattr(settings, 'GRAPESJS_PLUGIN_ASSETS', {})
 
 # A path to form with grapesjs form field
-GRAPESJS_FORM = getattr(settings, 'GRAPESJS_FORM', None)
+GRAPESJS_CREATE_FORM = getattr(settings, 'GRAPESJS_CREATE_FORM', None)
+
+# A path to form with grapesjs form field
+GRAPESJS_UPDATE_FORM = getattr(settings, 'GRAPESJS_UPDATE_FORM', None)
 
 # path to the html file of the form field. Enter your value for the override
 GRAPESJS_TEMPLATE = getattr(settings, 'GRAPESJS_TEMPLATE', 'django_grapesjs/forms/fields/textarea.html')
