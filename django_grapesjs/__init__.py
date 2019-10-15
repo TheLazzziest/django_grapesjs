@@ -6,14 +6,29 @@ from django.core.exceptions import ImproperlyConfigured
 from django_grapesjs import settings
 
 __all__ = [
-    'get_grapesjs_form'
+    'get_grapesjs_create_form',
+    'get_grapesjs_update_form',
+    'get_grapesjs_model',
 ]
 
 
-def get_grapesjs_form():
+def get_grapesjs_create_form():
     """Return the GrapesJS form that is active in this project."""
     try:
-        path_chunks = settings.GRAPESJS_FORM.split('.')
+        path_chunks = settings.GRAPESJS_CREATE_FORM.split('.')
+        module_path = ".".join(path_chunks[0:2])
+        module = import_module(module_path)
+        return getattr(module, path_chunks[2], None)
+    except ImportError as ie:
+        raise ImproperlyConfigured(
+            "GRAPESJS_FORM refers to form '%s' that has not been installed" % settings.GRAPESJS_FORM
+        )
+
+
+def get_grapesjs_update_form():
+    """Return the GrapesJS form that is active in this project."""
+    try:
+        path_chunks = settings.GRAPESJS_UPDATE_FORM.split('.')
         module_path = ".".join(path_chunks[0:2])
         module = import_module(module_path)
         return getattr(module, path_chunks[2], None)
