@@ -140,6 +140,9 @@ GRAPESJS_PLUGIN_ASSETS = {
     'grapesjs-blocks-basic': {
         'js': 'https://cdn.jsdelivr.net/npm/grapesjs-blocks-basic@0.1.8/dist/grapesjs-blocks-basic.min.js',
     },
+    'grapesjs-preset-webpage': {
+        'js': 'https://cdn.jsdelivr.net/npm/grapesjs-preset-webpage@0.1.11/dist/grapesjs-preset-webpage.min.js'
+    }
 }
 
 GRAPESJS_MODEL = 'app.GrapesJSJSONModel'
