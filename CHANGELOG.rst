@@ -16,6 +16,7 @@ Changelog
 - Split model abstract declaration to a set of models
 - Add an abstract form for meta-data
 - Update example app.
+- Add sqlite3 entry to git ignore file
 
 0.0.7 (2018-03-07)
 ---------------------------------
