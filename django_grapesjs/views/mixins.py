@@ -217,30 +217,3 @@ class GrapesJSDeleteViewMixin(GrapesJSContextDataMixin,
     def setup(self, request, *args, **kwargs):
         self.model = get_grapesjs_model()
         super().setup(request, *args, **kwargs)
-
-# def saveTemplate(cls, request, *args, **kwargs):
-#     template_data = json.loads(
-#         request.body.decode('utf-8')
-#     )
-#     form_data = {
-#         'data': template_data,
-#         'files': request.FILES,
-#     }
-#     form_class = cls.get_form_class()
-#     model_class = cls.get_model_class()
-#     lookup_field = settings.GRAPESJS_MODEL_LOOKUP_FIELD
-#     try:
-#         template_instance = model_class.objects.get(
-#             **{lookup_field: kwargs[lookup_field]}
-#         )
-#         form_data['instance'] = template_instance
-#     finally:
-#         grapesjs_form = form_class(**form_data)
-#
-#     if grapesjs_form.is_valid():
-#         status = HTTPStatus.OK
-#         data = grapesjs_form.save().to_dict()
-#     else:
-#         status = HTTPStatus.BAD_REQUEST
-#         data = grapesjs_form.errors
-#     return JsonResponse(status=status, data=data)
