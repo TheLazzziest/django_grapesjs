@@ -12,7 +12,8 @@ class BaseGrapesJSMetaDataForm(forms.ModelForm):
     """GrapesJS base form with form metadata."""
 
     title = fields.CharField(required=False)
-    url = fields.URLField(required=False)
+    domain = fields.CharField(required=False)
+    path = fields.CharField(required=False)
 
     def clean_url(self):
         return self.cleaned_data['url']
