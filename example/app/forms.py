@@ -6,11 +6,11 @@ from app.models import GrapesJSJSONModel
 class GrapesJSCreateForm(BaseGrapesJSMetaDataForm):
     class Meta:
         model = GrapesJSJSONModel
-        fields = ('title', 'url',)
+        fields = ('title', 'domain', 'path', )
 
 
 class GrapesJSUpdateForm(BaseGrapesJSForm):
     class Meta:
         model = GrapesJSJSONModel
-        exclude = ('title', 'url', 'created_at', )
+        exclude = ('title', 'domain', 'path', 'created_at', )
 
