@@ -61,6 +61,6 @@ docs/_build/
 # PyBuilder
 target/
 
-db.*
+**/db.sqlite3
 example/static/
 
