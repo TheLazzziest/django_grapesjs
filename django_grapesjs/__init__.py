@@ -16,9 +16,9 @@ def get_grapesjs_create_form():
     """Return the GrapesJS form that is active in this project."""
     try:
         path_chunks = settings.GRAPESJS_CREATE_FORM.split('.')
-        module_path = ".".join(path_chunks[0:2])
+        module_path = ".".join(path_chunks[0:-1])
         module = import_module(module_path)
-        return getattr(module, path_chunks[2], None)
+        return getattr(module, path_chunks[-1], None)
     except ImportError as ie:
         raise ImproperlyConfigured(
             "GRAPESJS_FORM refers to form '%s' that has not been installed" % settings.GRAPESJS_FORM
@@ -29,9 +29,9 @@ def get_grapesjs_update_form():
     """Return the GrapesJS form that is active in this project."""
     try:
         path_chunks = settings.GRAPESJS_UPDATE_FORM.split('.')
-        module_path = ".".join(path_chunks[0:2])
+        module_path = ".".join(path_chunks[0:-1])
         module = import_module(module_path)
-        return getattr(module, path_chunks[2], None)
+        return getattr(module, path_chunks[-1], None)
     except ImportError as ie:
         raise ImproperlyConfigured(
             "GRAPESJS_FORM refers to form '%s' that has not been installed" % settings.GRAPESJS_FORM
