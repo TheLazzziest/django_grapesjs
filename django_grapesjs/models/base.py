@@ -30,8 +30,8 @@ class BaseGrapesJSModel(models.Model):
     gjs_css = TextField(null=True, blank=True)
     gjs_html = TextField(null=True, blank=True)
 
-    gjs_styles = HStoreField(null=True, blank=True)
-    gjs_components = HStoreField(null=True, blank=True)
+    gjs_styles = TextField(null=True, blank=True)
+    gjs_components = TextField(null=True, blank=True)
 
     class Meta:
         abstract = True
