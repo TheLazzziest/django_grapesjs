@@ -1,3 +1,4 @@
 -r prod.txt
 Pygments==2.4.2
 packaging==19.2
+psycopg2==2.8.4
