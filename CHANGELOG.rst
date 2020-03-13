@@ -1,5 +1,17 @@
 Changelog
 =========
+0.0.9 (2020-14-03)
+------------------------------------
+- Add .vscode/ folder to gitignore.
+- Make grapesjs_container a parent for entire body.
+- Add DjangoCI badge
+- Fix initialization of `default_html` field in `GrapesJsField`
+- Add github action for django app
+- Add coverage and coverall packages
+- Remove initial global styles
+- Add grapesjs_styles tag to the base template
+- Add grapesjs_scripts tag to the base template
+
 0.0.8 (2019-09-30)
 ---------------------------------
 - Add .idea folder to .gitignore file.
