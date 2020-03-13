@@ -19,6 +19,9 @@ django_grapesjs
    :target: http://hits.dwyl.io/gulliverbms/https://github.com/gulliverbms/django_grapesjs
    :alt: HitCount
 
+.. image:: https://github.com/TheLazzziest/django_grapesjs/workflows/Django%20CI/badge.svg?branch=master
+   :target: https://github.com/TheLazzziest/django_grapesjs/workflows/Django%20CI/badge.svg?branch=master
+   :alt: Django CI
 
 A small library allows you to integrate the page builder "grapesjs" into django admin
 
