@@ -1,2 +1,2 @@
--r base.txt
+-r prod.txt
 Pygments==2.4.2
