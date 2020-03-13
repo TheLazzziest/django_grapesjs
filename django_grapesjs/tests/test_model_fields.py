@@ -29,7 +29,7 @@ class GrapesJsHtmlFieldTestCase(test.TestCase):
         }
 
     def test_init(self):
-        field = GrapesJsHtmlField(max_length)
+        field = GrapesJsHtmlField()
 
         self.assertDictEqual(field.params_for_formfield, self.default_params_for_formfield)
 
