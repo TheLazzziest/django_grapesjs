@@ -1,6 +1,6 @@
 from django import test
 from django.core.exceptions import ValidationError
-from django_grapesjs.forms import GrapesJsField, GrapesJsWidget
+from django_grapesjs.forms.fields import GrapesJsField
 
 __all__ = ('GrapesJsFieldTestCase', )
 
