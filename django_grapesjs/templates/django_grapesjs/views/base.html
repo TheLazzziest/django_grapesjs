@@ -10,13 +10,8 @@
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}">
 <head>
     <title>{% block title %}{{ title }}{% endblock %}</title>
-    <style>
-        body {
-            height: 100%;
-            margin: 0;
-            overflow: hidden;
-        }
-    </style>
+    {% block grapesjs_styles %}{% endblock %}
+    {% block grapesjs_scripts %}{% endblock %}
     {% block grapesjs_assets %}
         <link rel="stylesheet" type="text/css"
               href="{{ GRAPESJS_CORE|get_item:'css' }}">
