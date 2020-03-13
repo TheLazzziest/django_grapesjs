@@ -1,8 +1,10 @@
+from mock import mock
+
+from django import test
 from django.http import HttpResponse
 from django.template import TemplateDoesNotExist
-from mock import mock
-from django import test
-from django_grapesjs.views import GetTemplate
+
+from django_grapesjs.views.admin import GetTemplate
 
 __all__ = ('GetTemplateTestCase', )
 
@@ -23,6 +25,6 @@ class GetTemplateTestCase(test.TestCase):
             m.GET = {'template_name': 'value', 'apply_django_tag': '0'}
             GetTemplate.get(mock.Mock(), m)
 
-        m.GET = {'template_name': 'django_grapesjs/default.html', 'apply_django_tag': '0'}
+        m.GET = {'template_name': 'django_grapesjs/views/default.html', 'apply_django_tag': '0'}
         self.assertTrue(isinstance(GetTemplate.get(mock.Mock(), m), HttpResponse))
 

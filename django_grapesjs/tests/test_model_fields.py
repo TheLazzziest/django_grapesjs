@@ -1,8 +1,9 @@
 from django import test
 from django.core.management.base import SystemCheckError
 
-from django_grapesjs.models import GrapesJsHtmlField
-from django_grapesjs.forms import GrapesJsField, GrapesJsWidget
+from django_grapesjs.models.fields import GrapesJsHtmlField
+from django_grapesjs.forms.fields import GrapesJsField
+from django_grapesjs.forms.widgets import GrapesJsWidget
 from django_grapesjs.settings import REDACTOR_CONFIG
 
 __all__ = ('GrapesJsHtmlFieldTestCase', )

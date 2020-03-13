@@ -1,7 +1,8 @@
 from mock import mock
 from django import test
 from django.core.exceptions import ValidationError
-from django_grapesjs.forms import GrapesJsField, GrapesJsWidget
+from django_grapesjs.forms.fields import GrapesJsField
+from django_grapesjs.forms.widgets import GrapesJsWidget
 
 __all__ = ('GrapesJsWidgetTestCase', )
 

@@ -22,9 +22,6 @@ class GrapesJsHtmlField(models.TextField):
                 "use 'template_choices' instead of 'choices' in the '%s'" % self.__class__.__name__
             )
 
-        if self.check_template_choices(template_choices):
-            default_html = template_choices[0][0]
-
         self.params_for_formfield = {
             'default_html': default_html,
             'html_name_init_conf': REDACTOR_CONFIG[redactor_config],
@@ -36,6 +33,9 @@ class GrapesJsHtmlField(models.TextField):
         }
 
         super().__init__(**kwargs)
+
+        if self.check_template_choices(template_choices):
+            self.params_for_formfield['default_html'] = template_choices[0][0]
 
     def formfield(self, **kwargs):
         return super().formfield(**{**kwargs, **self.params_for_formfield})

@@ -24,7 +24,11 @@ jobs:
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r requirements/test.txt
     - name: Run Tests
+      run: coverage run --source=django_grapesjs --omit=*/migrations/*,*/tests/* manage.py test django_grapesjs
+      working-directory: ./example
+    - name: Run coveralls
       run: |
-        python manage.py test
+        coverage report
+      working-directory: ./example
