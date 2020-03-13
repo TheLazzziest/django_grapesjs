@@ -40,22 +40,22 @@
 </head>
 {% load i18n %}
 
-<body data-utc-offset="{% now "Z" %}">
 
 <!-- Container -->
 {% block grapesjs_container %}
-    <div id="{{ GRAPESJS_CONTAINER_ID }}"></div>
+    <body data-utc-offset="{% now "Z" %}">
+        <div id="{{ GRAPESJS_CONTAINER_ID }}"></div>
+        <!-- END Container -->
+        {% block grapesjs %}
+            <script>
+                const editor = grapesjs.init({
+                    // Indicate where to init the editor. You can also pass an HTMLElement
+                    container: "#{{ GRAPESJS_CONTAINER_ID }}",
+                    {{ GRAPESJS_CORE_SETTINGS }}
+                    plugins: [{% for plugin_name in GRAPESJS_PLUGINS.keys %}'{{ plugin_name }}', {% empty %}{% endfor %}]
+                });
+            </script>
+        {% endblock %}
+    </body>
 {% endblock %}
-<!-- END Container -->
-{% block grapesjs %}
-    <script>
-        const editor = grapesjs.init({
-            // Indicate where to init the editor. You can also pass an HTMLElement
-            container: "#{{ GRAPESJS_CONTAINER_ID }}",
-            {{ GRAPESJS_CORE_SETTINGS }}
-            plugins: [{% for plugin_name in GRAPESJS_PLUGINS.keys %}'{{ plugin_name }}', {% empty %}{% endfor %}]
-        });
-    </script>
-{% endblock %}
-</body>
 </html>
