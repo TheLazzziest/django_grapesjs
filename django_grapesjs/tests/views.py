@@ -1,8 +1,10 @@
+from mock import mock
+
+from django import test
 from django.http import HttpResponse
 from django.template import TemplateDoesNotExist
-from mock import mock
-from django import test
-from django_grapesjs.views import GetTemplate
+
+from django_grapesjs.views.admin import GetTemplate
 
 __all__ = ('GetTemplateTestCase', )
 
