@@ -1,5 +1,5 @@
 -r dev.txt
-filelock==3.0.12
+filelock==3.20.1
 importlib-metadata==0.23
 more-itertools==7.2.0
 pyparsing==2.4.2
